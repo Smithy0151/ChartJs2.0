@@ -106,10 +106,27 @@ function drawChart(symbol) {
         data: {
           labels: timeData,
           datasets: [{
-            label: symbol,
+            label: 'Close Price',
             data: closePrices,
             borderWidth: 1
-          }]
+          },
+          {
+            label: 'High Price',
+            data: highPrices,
+            borderWidth: 1
+          },
+          {
+            label: 'Open Price',
+            data: openPrices,
+            borderWidth: 1
+          },
+          {
+            label: 'Low Price',
+            data: lowPrices,
+            borderWidth: 1
+          }
+        
+        ]
         },
         options: {
           maintainAspectRatio: false,
@@ -153,8 +170,14 @@ async function executeAction() {
     if (myChart) {
         // Update the existing chart
         myChart.data.labels = timeData;
-        myChart.data.datasets[0].label = selectedOption;
+        myChart.data.datasets[0].label = 'Close Prices';
         myChart.data.datasets[0].data = closePrices;
+        myChart.data.datasets[1].label = 'High Prices';
+        myChart.data.datasets[1].data = highPrices;
+        myChart.data.datasets[2].label = 'Open Prices';
+        myChart.data.datasets[2].data = openPrices;
+        myChart.data.datasets[3].label = 'Low Prices';
+        myChart.data.datasets[3].data = lowPrices;
         myChart.update();
     } else {
         // Create a new chart if it doesn't exist
