@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>ChartJs Rust Project</title>
+</head>
+<body>
+    <div class="container">
+    <label for="dropdown">Select a Company:</label>
+    <select id="dropdown" onchange="logSymbol()">
+        <option value="AAPL">Apple</option>
+        <option value="TSLA">Tesla</option>
+        <option value="MSFT">Microsoft</option>
+        <option value="GOOG">Google</option>
+        <option value="META">Meta</option>
+    </select>
+
+    <label for="datePicker">Select a Date:</label>
+    <input type="date" id="datePicker" onchange="logDate()">
+
+    <div class="chartContainer">
+    <canvas id="myChart"></canvas>
+    </div>
+    </div>
+
+</body>
+
+<script src="main.js"></script>
+</html>
