@@ -17,31 +17,31 @@
         <h1>Select a company and then a date too see the stock price and news for that week.</h1>
         <div class="screens">
             <div class="left">
-                <div class="stock">
+                <div class="stock" onclick="updateSymbol('AAPL')">
                     <h1>Apple</h1>
                     <div class="logo">
                         <img src="apple.svg" alt="Description of the image" class="image">
                     </div>
                 </div>
-                <div class="stock">
+                <div class="stock" onclick="updateSymbol('TSLA')">
                     <h1>Tesla</h1>
                     <div class="logo">
                         <img src="tesla.svg" alt="Description of the image" class="image">
                     </div>
                 </div>
-                <div class="stock">
+                <div class="stock" onclick="updateSymbol('MSFT')">
                     <h1>Microsoft</h1>
                     <div class="logo">
                         <img src="microsoft.svg" alt="Description of the image" class="image">
                     </div>
                 </div>
-                <div class="stock">
+                <div class="stock" onclick="updateSymbol('GOOG')">
                     <h1>Google</h1>
                     <div class="logo">
                         <img src="google.svg" alt="Description of the image" class="image">
                     </div>
                 </div>
-                <div class="stock">
+                <div class="stock" onclick="updateSymbol('META')">
                     <h1>Meta</h1>
                     <div class="logo">
                         <img src="meta.svg" alt="Description of the image" class="image">
@@ -55,15 +55,6 @@
                 </div>
             </div>
         </div>
-    <label for="dropdown">Select a Company:</label>
-    <select id="dropdown" onchange="logSymbol()">
-        <option value="AAPL">Apple</option>
-        <option value="TSLA">Tesla</option>
-        <option value="MSFT">Microsoft</option>
-        <option value="GOOG">Google</option>
-        <option value="META">Meta</option>
-    </select>
-
 </body>
 
 <script src="main.js"></script>

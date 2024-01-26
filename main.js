@@ -5,9 +5,9 @@ var isDateSelected = false;
 var selectedOption;
 var selectedDate;
 
-function logSymbol() {
+function updateSymbol(ticker) {
     // Get the selected value from the dropdown
-    selectedOption = document.getElementById("dropdown").value;
+    selectedOption = ticker;
 
     // Log the selected option and date
     console.log("Selected Option:", selectedOption);
@@ -133,7 +133,15 @@ function drawChart(symbol) {
           scales: {
             y: {
               beginAtZero: false,
-            }
+              grid: {
+                color: 'white'
+              },
+            },
+            x: {
+              grid: {
+                color: 'white'
+              },
+            },
           }
         }
     });
