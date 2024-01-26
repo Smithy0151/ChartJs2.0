@@ -132,7 +132,7 @@ function drawChart(symbol) {
           maintainAspectRatio: false,
           scales: {
             y: {
-              beginAtZero: true
+              beginAtZero: false,
             }
           }
         }

@@ -3,12 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital@1&display=swap" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>ChartJs Rust Project</title>
 </head>
 <body>
     <div class="container">
+        <h1>Select a company and then a date too see the stock price and news for that week.</h1>
+        <div class="screens">
+            <div class="left">
+                <div class="stock">
+                    <h1>Apple</h1>
+                    <div class="logo">
+                        <img src="apple.svg" alt="Description of the image" class="image">
+                    </div>
+                </div>
+                <div class="stock">
+                    <h1>Tesla</h1>
+                    <div class="logo">
+                        <img src="tesla.svg" alt="Description of the image" class="image">
+                    </div>
+                </div>
+                <div class="stock">
+                    <h1>Microsoft</h1>
+                    <div class="logo">
+                        <img src="microsoft.svg" alt="Description of the image" class="image">
+                    </div>
+                </div>
+                <div class="stock">
+                    <h1>Google</h1>
+                    <div class="logo">
+                        <img src="google.svg" alt="Description of the image" class="image">
+                    </div>
+                </div>
+                <div class="stock">
+                    <h1>Meta</h1>
+                    <div class="logo">
+                        <img src="meta.svg" alt="Description of the image" class="image">
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <input type="date" id="datePicker" onchange="logDate()">
+                <div class="chartContainer">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
     <label for="dropdown">Select a Company:</label>
     <select id="dropdown" onchange="logSymbol()">
         <option value="AAPL">Apple</option>
@@ -17,14 +63,6 @@
         <option value="GOOG">Google</option>
         <option value="META">Meta</option>
     </select>
-
-    <label for="datePicker">Select a Date:</label>
-    <input type="date" id="datePicker" onchange="logDate()">
-
-    <div class="chartContainer">
-    <canvas id="myChart"></canvas>
-    </div>
-    </div>
 
 </body>
 
