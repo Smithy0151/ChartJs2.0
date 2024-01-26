@@ -1,5 +1,11 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .container{
     margin: auto;
+    background-color: black;
 }
 
 .screens{
@@ -98,4 +104,9 @@ input[type="date"]:focus {
 
 h1{
     font-family: 'Barlow', sans-serif;
+    color: white;
+}
+
+.heading{
+    text-align: center;
 }

@@ -147,6 +147,10 @@ function drawChart(symbol) {
     });
 }
 
+async function requestNews() {
+  
+}
+
 
 
 
