@@ -45,9 +45,10 @@ const openPrices = [];
 const lowPrices = [];
 const timeData = [];
 
+const apiKey = 'PKLNK477GT4FKEW3LH4S';
+const apiSecret = '9o1RkCbSHVZVWLt7mfv3O0oCgelX1H0afPg5ppBV';
+
 async function apiRequest(symbol,date){
-    const apiKey = 'PKLNK477GT4FKEW3LH4S';
-    const apiSecret = '9o1RkCbSHVZVWLt7mfv3O0oCgelX1H0afPg5ppBV';
 
     const apiUrl = 'https://data.alpaca.markets/v2/stocks/bars?symbols='+ symbol + '&timeframe=1day&start='+ date +'&limit=7&adjustment=raw&feed=sip&sort=asc'
 
@@ -147,23 +148,66 @@ function drawChart(symbol) {
     });
 }
 
-async function requestNews() {
+const headlines = [];
+const newsUrls = [];
+const imgUrls = [];
+
+async function requestNews(symbol, date) {
+    const apiUrl = "https://data.alpaca.markets/v1beta1/news?start="+ date +"T00%3A00%3A00Z&sort=asc&symbols="+ symbol +"&limit=6"
+
+    const headers = new Headers({
+      'APCA-API-KEY-ID': apiKey,
+      'APCA-API-SECRET-KEY': apiSecret,
+    });
+
+    function createRequest(url) {
+      const request = new Request(url, {
+        method: 'GET',
+        headers: headers,
+      });
+      return request;
+    }
+
+  const request = createRequest(apiUrl);
+
+  const response = await fetch(request);
+  const data = await response.json();
+
+  console.log(data);
+
+  for(let i=0; i<6; i++){
+    headlines.push(data.news[i].headline)
+    newsUrls.push(data.news[i].url)
+    imgUrls.push(data.news[i].images[1])
+  }
+
+  console.log(headlines[0])
+  // console.log(newsUrls[0])
+  console.log(imgUrls[0].url)
+  
+  displayImage("imgOne",0)
+  updateHeader("headerOne",headlines[0])
   
 }
 
+function updateHeader(headerId, value) {
+    var headerElement = document.getElementById(headerId);
+    headerElement.innerHTML = value;
+}
 
+function displayImage(imageId, index) {
+  // Get the image URL from the array
+  var imageUrl = imgUrls[index].url;
+
+  // Get the image container element from the HTML
+  var imageContainer = document.getElementById(imageId);
+
+  imageContainer.setAttribute('src', imageUrl)
+}
 
 
 // Function to execute the desired action when both symbol and date are selected
 async function executeAction() {
-
-    //Destroys previous Chart
-    //myChart.destroy();
-
-    // console.log("Both symbol and date selected. Performing the desired action.");
-    // console.log(selectedOption, selectedDate);
-    // await apiRequest(selectedOption,selectedDate);
-    // drawChart(selectedOption);
 
     console.log("Both symbol and date selected. Performing the desired action.");
     console.log(selectedOption, selectedDate);
@@ -175,8 +219,12 @@ async function executeAction() {
     lowPrices.length = 0;
     timeData.length = 0;
 
-    // Make API request
+    headlines.length = 0;
+    imgUrls.length = 0;
+
+    // Make API request for Price Data
     await apiRequest(selectedOption, selectedDate);
+    await requestNews(selectedOption, selectedDate);
 
     // Check if the chart already exists
     if (myChart) {
