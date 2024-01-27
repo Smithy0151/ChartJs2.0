@@ -182,11 +182,32 @@ async function requestNews(symbol, date) {
   }
 
   console.log(headlines[0])
-  // console.log(newsUrls[0])
+  //console.log(newsUrls[0])
   console.log(imgUrls[0].url)
   
   displayImage("imgOne",0)
   updateHeader("headerOne",headlines[0])
+  updateLink("linkOne",newsUrls[0])
+
+  displayImage("imgTwo",1)
+  updateHeader("headerTwo",headlines[1])
+  updateLink("linkTwo",newsUrls[1])
+
+  displayImage("imgThree",2)
+  updateHeader("headerThree",headlines[2])
+  updateLink("linkThree",newsUrls[2])
+
+  displayImage("imgFour",3)
+  updateHeader("headerFour",headlines[3])
+  updateLink("linkFour",newsUrls[3])
+
+  displayImage("imgFive",4)
+  updateHeader("headerFive",headlines[4])
+  updateLink("linkFive",newsUrls[4])
+
+  displayImage("imgSix",5)
+  updateHeader("headerSix",headlines[5])
+  updateLink("linkSix",newsUrls[5])
   
 }
 
@@ -205,6 +226,12 @@ function displayImage(imageId, index) {
   imageContainer.setAttribute('src', imageUrl)
 }
 
+function updateLink(id, value){
+    var link = document.getElementById(id);
+
+    link.setAttribute('href', value)
+}
+
 
 // Function to execute the desired action when both symbol and date are selected
 async function executeAction() {
@@ -221,6 +248,7 @@ async function executeAction() {
 
     headlines.length = 0;
     imgUrls.length = 0;
+    newsUrls.length= 0;
 
     // Make API request for Price Data
     await apiRequest(selectedOption, selectedDate);
