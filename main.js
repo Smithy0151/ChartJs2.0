@@ -12,6 +12,8 @@ function updateSymbol(ticker) {
     // Log the selected option and date
     console.log("Selected Option:", selectedOption);
 
+    document.getElementById('symbolHeader').innerHTML = 'Stock Selected: ' + selectedOption;
+
     // Update the flag indicating that the symbol has been selected
     isSymbolSelected = true;
 
