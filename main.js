@@ -182,7 +182,7 @@ async function requestNews(symbol, date) {
   }
 
   console.log(headlines[0])
-  //console.log(newsUrls[0])
+  console.log(newsUrls[0])
   console.log(imgUrls[0].url)
   
   displayImage("imgOne",0)
@@ -252,7 +252,6 @@ async function executeAction() {
 
     // Make API request for Price Data
     await apiRequest(selectedOption, selectedDate);
-    await requestNews(selectedOption, selectedDate);
 
     // Check if the chart already exists
     if (myChart) {
@@ -272,7 +271,5 @@ async function executeAction() {
         drawChart(selectedOption);
     }
 
+    await requestNews(selectedOption, selectedDate);
 }
-
-
-
